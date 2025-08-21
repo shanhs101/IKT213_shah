@@ -12,10 +12,9 @@ def print_image_information(image):
 def record_camera():
     cam = cv2.VideoCapture(0)
 
-    # Try to request 60 fps
+    # try to record in 60fps
     cam.set(cv2.CAP_PROP_FPS, 60)
 
-    # Read back what the camera actually provides
     fps = cam.get(cv2.CAP_PROP_FPS)
     print("Requested 60 FPS, actual FPS:", fps)
 
