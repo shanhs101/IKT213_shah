@@ -1,0 +1,52 @@
+# ----------------
+# Python
+# ----------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.pkl
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Test / output media files
+*.mp4
+*.avi
+*.mov
+*.jpg
+*.jpeg
+*.bmp
+
+# Any text outputs
+camera_outputs.txt
+
+# ----------------
+# Jupyter
+# ----------------
+.ipynb_checkpoints
+
+# ----------------
+# VSCode
+# ----------------
+.vscode/
+
+# ----------------
+# PyCharm / JetBrains
+# ----------------
+.idea/
+*.iml
+
+# ----------------
+# OS-specific
+# ----------------
+.DS_Store
+Thumbs.db
