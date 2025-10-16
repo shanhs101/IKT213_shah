@@ -47,7 +47,7 @@ def hsv (image):
     cv2.destroyAllWindows()
 
 
-def hue_shifted (image, emptyPictureArray, hue):
+def hue_shifted2 (image, emptyPictureArray, hue):
     emptyPictureArray[:] = image[:]
     emptyPictureArray = np.clip(emptyPictureArray + hue, 0, 255).astype(np.uint8)
 
@@ -55,6 +55,28 @@ def hue_shifted (image, emptyPictureArray, hue):
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+import cv2
+import numpy as np
+
+def hue_shifted(image, emptyPictureArray, hue):
+
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+    h, s, v = cv2.split(hsv)
+
+    shift = int(round(hue / 2.0))
+    h = ((h.astype(np.int16) + shift) % 180).astype(np.uint8)
+
+    hsv_shifted = cv2.merge([h, s, v])
+    hue_image = cv2.cvtColor(hsv_shifted, cv2.COLOR_HSV2BGR)
+
+    emptyPictureArray[:] = hue_image
+
+    cv2.imshow("Hue changed", hue_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
 
 
 def smoothing (image):
@@ -85,15 +107,15 @@ def main ():
     emptyPictureArray = np.zeros((height, width, 3), dtype=np.uint8)
 
 
-    padding(img_rgb, 100)
-    crop(image, 80, 382, 80, 382)
-    resize(img_rgb, 200, 200)
-    copy(image, emptyPictureArray)
-    grayscale(image)
-    hsv(image)
+    # padding(img_rgb, 100)
+    # crop(image, 80, 382, 80, 382)
+    # resize(img_rgb, 200, 200)
+    # copy(image, emptyPictureArray)
+    # grayscale(image)
+    # hsv(image)
     hue_shifted(image,emptyPictureArray, 50)
-    smoothing(image)
-    rotation(image, 90)
+    # smoothing(image)
+    # rotation(image, 90)
 
 
 if __name__ == "__main__":

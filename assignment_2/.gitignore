@@ -24,7 +24,6 @@ env/
 *.mov
 *.jpg
 *.jpeg
-*.png
 *.bmp
 
 # Any text outputs
