@@ -38,18 +38,22 @@ def template_match(image, template):
     cv2.imshow('res.png', image)
     cv2.waitKey(0)
 
-def resize(image, scale_factor, up_or_down):
-    h, w = image.shape[:2]
-    if up_or_down == "up":
-        new_size = (w * scale_factor, h * scale_factor)
-        resized = cv2.resize(image, new_size, interpolation=cv2.INTER_CUBIC)
 
-    elif up_or_down == "down":
-        new_size = (w // scale_factor, h // scale_factor)
-        resized = cv2.resize(image, new_size, interpolation=cv2.INTER_AREA)
-    cv2.imshow("Resized", resized)
+def resize(image, scale_factor, up_or_down):
+
+
+    resized_image = image.copy()
+
+    for _ in range(scale_factor):
+        if up_or_down == "up":
+            resized_image = cv2.pyrUp(resized_image)
+        elif up_or_down == "down":
+            resized_image = cv2.pyrDown(resized_image)
+
+    cv2.imshow("Resized (Pyramid)", resized_image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
 
 
 
