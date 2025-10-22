@@ -47,17 +47,6 @@ def hsv (image):
     cv2.destroyAllWindows()
 
 
-def hue_shifted2 (image, emptyPictureArray, hue):
-    emptyPictureArray[:] = image[:]
-    emptyPictureArray = np.clip(emptyPictureArray + hue, 0, 255).astype(np.uint8)
-
-    cv2.imshow("Hue changed", emptyPictureArray)
-
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-import cv2
-import numpy as np
 
 def hue_shifted(image, emptyPictureArray, hue):
 
